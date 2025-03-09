@@ -1,0 +1,48 @@
+{% extends 'authenticate/base.html' %}
+
+{% block content %}
+<!-- <div id="list-container">
+    <table class="table table-borderless">
+        <thead class="border-bottom font-weight-bold">
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Course</th>
+                <th>Is Active</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in user_detail_list %}
+                <tr>
+                    <td>{{ user.first_name }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>{{ user.course }}</td>
+                    <td>{{ user.is_active }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div> -->
+
+
+
+
+
+
+
+
+<head>
+    <title>{{ user.first_name }}'s Profile</title>
+</head>
+<body>
+    <h1>{{ user.first_name }} {{ user.last_name }}</h1>
+    <p></p>
+    <p>Email: {{ user.email }}</p>
+    <p>Course: {{ user.course }}</p>
+
+    <a href="{% url 'user_list' %}">Back to List</a>
+    <a href="{% url 'user_update' user.pk %}" class="btn text-secondary px-0">
+        <i class="far fa-edit fa-lg">edit</i>
+    </a>
+</body>
+{% endblock %}

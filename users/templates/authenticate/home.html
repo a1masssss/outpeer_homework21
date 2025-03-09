@@ -1,12 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>Home Page</h1>
-    
-</body>
-</html>
+{% extends 'authenticate/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<h1>Home Page</h1>
+<h3>some content</h3>
+
+{% endblock %}

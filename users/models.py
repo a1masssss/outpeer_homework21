@@ -1,6 +1,8 @@
 from django.db import models
-
+from django.utils.crypto import get_random_string
 from django.contrib.auth.models import AbstractUser
+from django.core.mail import send_mail
+from functools import partial
 COURSE_CHOICES = [
     ('AI Engineer', 'AI Engineer'), 
     ('Data Science', 'Data Science'), 
@@ -30,3 +32,25 @@ class User(AbstractUser):
 
     def __str__(self):
         return f"{self.email}"
+
+
+get_random_token = partial(get_random_string, 100)
+class EmailActivation(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    token  = models.CharField(max_length=100, unique=True, default=get_random_token)
+    is_active = models.BooleanField(default=True)
+
+
+    def send_email(self):
+        subject = 'Activate your account'
+        message = f'Click here to activate your account: http://localhost:8000/activate/{self.token}'
+        form_email = 'example@mail.com'
+        recipient_list = [self.user.email]
+
+
+
+        send_mail(subject, message, form_email, recipient_list, fail_silently=False)
+
+        print('*' * 20)
+        print('Email sent')
+        print('*' * 20)
