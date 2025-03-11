@@ -9,6 +9,7 @@ COURSE_CHOICES = [
     ('Data Analytics', 'Data Analytics'), 
     ('Python Engineering', 'Python Engineering'),
     ('Investment Analytics', 'Investment Analytics'),
+    ('Stuff', 'Stuff'),
 ]
 ROlE_CHOICES = [
     ('Student', 'Student'), 
@@ -32,6 +33,9 @@ class User(AbstractUser):
 
     def __str__(self):
         return f"{self.email}"
+    
+
+
 
 
 get_random_token = partial(get_random_string, 100)

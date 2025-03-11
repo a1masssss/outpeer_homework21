@@ -25,4 +25,10 @@ class UserUpdateForm(forms.ModelForm):
         # widgets = {
         #     'is_active': forms.CheckboxInput(attrs={'class': 'form-check-input'})
         # }
+    def save(self, commit= True):
+        user = super().save(commit)
+        print(f'Updated User: {user.email}, is_active={user.is_active}')
+        if commit:
+            user.save()
+        return user
 

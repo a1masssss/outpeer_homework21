@@ -42,7 +42,8 @@ class UserListView(ListView):
 class UserDetailView(DetailView):
     model = User
     template_name = 'authenticate/user_detail.html'
-    context_object_name = 'user'  # Default is "object"
+    context_object_name = 'user'
+    ordering =  ['id']  # Default is "object"
 
 
 
@@ -57,6 +58,8 @@ class UserUpdateView(UpdateView):
     form_class = UserUpdateForm
     template_name = 'authenticate/user_update.html'
     success_url = reverse_lazy('user_list')
+
+
 
 
     
