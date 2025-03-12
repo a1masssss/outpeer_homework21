@@ -1,14 +1,8 @@
 from rest_framework import serializers
-from .models import Course, User
+from .models import Course
 
 class CourseSerializer(serializers.ModelSerializer):
     class Meta:
-        teacher = serializers.SlugRelatedField(
-        queryset=User.objects.all(), slug_field="username"
-        )
-        students = serializers.SlugRelatedField(
-        queryset=User.objects.all(), slug_field="username", many=True
-            )
         model = Course
         fields = '__all__'
 

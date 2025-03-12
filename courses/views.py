@@ -7,7 +7,6 @@ from rest_framework.views import APIView
 
 
 class CourseView(APIView):
-    
     def get(self, request):
         course = Course.objects.all()
         serializer = CourseSerializer(course, many=True)
